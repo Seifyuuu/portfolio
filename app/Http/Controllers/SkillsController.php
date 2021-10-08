@@ -64,10 +64,10 @@ class SkillsController extends Controller
      * @param  \App\Models\Skill  $skills
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skill $skills)
+    public function edit(Skill $skill)
     {
         $profile = Profile::first();
-        return view("backoffice.sections.skills.edit", compact("profile"));
+        return view("backoffice.sections.skills.edit", compact("profile", "skill"));
     }
 
     /**
@@ -81,6 +81,7 @@ class SkillsController extends Controller
     {
         $skills->name = $request->name;
         $skills->level = $request->level;
+        $skills->icon = $request->icon;
         $skills->save();
         return redirect()->route("skills.index");
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -68,7 +69,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $profile = Profile::first();
+        return view("backoffice.sections.project.edit", compact("project", "profile"));
     }
 
     /**
@@ -80,7 +82,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        Storage::disk("public")->delete("img/".$project->img);
+        $project->name = $request->name;
+        $project->date = $request->date;
+        $project->desc = $request->desc;
+        $project->img = $request->file("img")->hashName();
+        $project->save();
+        $request->file("img")->storePublicly("img", "public");
+        return redirect()->route("project.index");
     }
 
     /**

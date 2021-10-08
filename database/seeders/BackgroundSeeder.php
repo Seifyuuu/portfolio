@@ -15,7 +15,7 @@ class BackgroundSeeder extends Seeder
     public function run()
     {
         DB::table('backgrounds')->insert([
-            ["img"=>"background.png"]
+            ["img"=>"background.jpg"]
         ]);
     }
 }
