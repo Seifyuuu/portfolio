@@ -3,4 +3,5 @@
 
 @include("site.sections.main")
 @include("site.sections.photo")
+@include("site.sections.modalSkills")
 @endsection

@@ -17,13 +17,14 @@
         <p class="pt-8 text-sm">{{$profile->desc}}</p>
 
         <div class="pt-12 pb-8">
-            <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+            <button id="card_open" onclick="openModalS('main-modal')" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
                 Check my skills ! 
             </button> 
-            <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+            
+            <button id="card_open" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
                 My Projects
             </button> 
-            <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+            <button id="card_open" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
                 Get In Touch
               </button>
         </div>
