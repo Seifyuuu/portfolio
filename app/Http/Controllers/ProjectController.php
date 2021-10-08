@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Languages;
+use App\Models\Profile;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class LanguagesController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class LanguagesController extends Controller
      */
     public function index()
     {
-        //
+        $profile = Profile::first();
+        $project = Project::all();
+        return view("backoffice.sections.project.all", compact("profile", "project"));
     }
 
     /**
@@ -24,7 +27,8 @@ class LanguagesController extends Controller
      */
     public function create()
     {
-        //
+        $profile = Profile::first();
+        return view("backoffice.sections.project.create", compact("profile"));
     }
 
     /**
@@ -35,16 +39,23 @@ class LanguagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = new Project();
+        $project->name = $request->name;
+        $project->date = $request->date;
+        $project->img = $request->file("img")->hashName();
+        $project->desc = $request->desc;
+        $project->save();
+        $request->file("img")->storePublicly("img", "public");
+        return redirect()->route("project.index");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Languages $languages)
+    public function show(Project $project)
     {
         //
     }
@@ -52,10 +63,10 @@ class LanguagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Languages $languages)
+    public function edit(Project $project)
     {
         //
     }
@@ -64,10 +75,10 @@ class LanguagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Languages $languages)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -75,10 +86,10 @@ class LanguagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Languages $languages)
+    public function destroy(Project $project)
     {
         //
     }

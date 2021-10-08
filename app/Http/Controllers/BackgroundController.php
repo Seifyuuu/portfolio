@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Background;
 use App\Models\Profile;
-use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class SkillsController extends Controller
+class BackgroundController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,8 +17,8 @@ class SkillsController extends Controller
     public function index()
     {
         $profile = Profile::first();
-        $skills = Skill::all();
-        return view("backoffice.sections.skills.all", compact("profile", "skills"));
+        $background = Background::all();
+        return view("backoffice.sections.background.all", compact("profile","background"));
     }
 
     /**
@@ -27,8 +28,7 @@ class SkillsController extends Controller
      */
     public function create()
     {
-        $profile = Profile::first();
-        return view("backoffice.sections.skills.create", compact("profile"));
+       
     }
 
     /**
@@ -39,21 +39,16 @@ class SkillsController extends Controller
      */
     public function store(Request $request)
     {
-        $skills = new Skill();
-        $skills->name = $request->name;
-        $skills->level = $request->level;
-        $skills->icon = $request->icon;
-        $skills->save();
-        return redirect()->route("skills.index");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Background  $background
      * @return \Illuminate\Http\Response
      */
-    public function show(Skill $skills)
+    public function show(Background $background)
     {
         //
     }
@@ -61,39 +56,40 @@ class SkillsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Background  $background
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skill $skills)
+    public function edit(Background $background)
     {
         $profile = Profile::first();
-        return view("backoffice.sections.skills.edit", compact("profile"));
+        $background = Background::first();
+        return view("backoffice.sections.background.edit", compact("profile","background"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Background  $background
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skills)
+    public function update(Request $request, Background $background)
     {
-        $skills->name = $request->name;
-        $skills->level = $request->level;
-        $skills->save();
-        return redirect()->route("skills.index");
+        Storage::disk("public")->delete("img/".$background->img);
+        $background->img = $request->file("img")->hashName();
+        $background->save();
+        $request->file("img")->storePublicly("img", "public");
+        return redirect()->route("background.index");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Background  $background
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(Background $background)
     {
-        $skill->delete();
-        return redirect()->route('skills.index');
+        //
     }
 }

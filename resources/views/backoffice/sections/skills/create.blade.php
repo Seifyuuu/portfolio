@@ -11,7 +11,13 @@
             <input name="name" class="" type="text" value="{{old("name")}}">
             <br>
             <label class="text-white" for="">Level</label>
-            <input name="url" type="text" value="{{old("level")}}">
+            <select name="level" id="">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
             <br>
             <label class="text-white" for="">Icon</label>
             <select name="icon" id="">

@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\BackgroundController;
+use App\Models\Background;
+use App\Models\Language;
 use App\Models\Network;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $profile = Profile::first();
     $network = Network::all();
-    return view('site.partials.home', compact("profile", "network"));
+    $language = Language::all();
+    $background = Background::first();
+    return view('site.partials.home', compact("background" ,"language", "profile", "network"));
 });
 
 Route::get('/back', function () {
@@ -32,3 +39,6 @@ Route::get('/back', function () {
 Route::resource('/back/profile', ProfileController::class);
 Route::resource('/back/network', NetworkController::class);
 Route::resource('/back/skills', SkillsController::class);
+Route::resource('/back/language', LanguageController::class);
+Route::resource('/back/project', ProjectController::class);
+Route::resource('/back/background', BackgroundController::class);

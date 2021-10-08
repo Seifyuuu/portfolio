@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
 use App\Models\Profile;
-use App\Models\Skill;
 use Illuminate\Http\Request;
 
-class SkillsController extends Controller
+class LanguageController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,8 +16,8 @@ class SkillsController extends Controller
     public function index()
     {
         $profile = Profile::first();
-        $skills = Skill::all();
-        return view("backoffice.sections.skills.all", compact("profile", "skills"));
+        $language = Language::all();
+        return view("backoffice.sections.languages.all", compact("profile", "language"));
     }
 
     /**
@@ -28,7 +28,7 @@ class SkillsController extends Controller
     public function create()
     {
         $profile = Profile::first();
-        return view("backoffice.sections.skills.create", compact("profile"));
+        return view("backoffice.sections.languages.create", compact("profile"));
     }
 
     /**
@@ -39,21 +39,19 @@ class SkillsController extends Controller
      */
     public function store(Request $request)
     {
-        $skills = new Skill();
-        $skills->name = $request->name;
-        $skills->level = $request->level;
-        $skills->icon = $request->icon;
-        $skills->save();
-        return redirect()->route("skills.index");
+        $language = new language();
+        $language->name = $request->name;
+        $language->save();
+        return redirect()->route("language.index");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function show(Skill $skills)
+    public function show(Language $language)
     {
         //
     }
@@ -61,39 +59,35 @@ class SkillsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skill $skills)
+    public function edit(Language $language)
     {
-        $profile = Profile::first();
-        return view("backoffice.sections.skills.edit", compact("profile"));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skills)
+    public function update(Request $request, Language $language)
     {
-        $skills->name = $request->name;
-        $skills->level = $request->level;
-        $skills->save();
-        return redirect()->route("skills.index");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Skill  $skills
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(Language $language)
     {
-        $skill->delete();
-        return redirect()->route('skills.index');
+        $language->delete();
+        return redirect()->route("language.index");
     }
 }

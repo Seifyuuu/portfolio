@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
            ProfileSeeder::class,
            NetworkSeeder::class,
-           SkillsSeeder::class
+           SkillsSeeder::class,
+           LanguageSeeder::class,
+           ProjectSeeder::class,
+           BackgroundSeeder::class
         ]);
     }
 }

@@ -18,8 +18,9 @@ class ProfileSeeder extends Seeder
             "name"=>"Seif Le Testeur",
             "job"=>"Web Developer",
             "location"=>"Bruxelles - Belgium",
-            "desc"=>"Totally optional short description about yourself, what you do and so on.",
-            "photo"=>"https://source.unsplash.com/MP0IUfwrn0A"
+            "desc"=>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A explicabo, voluptatum neque veniam quibusdam debitis!",
+            "photo"=>"submarine.png"
         ]);
     }
 }
+
