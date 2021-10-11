@@ -20,8 +20,14 @@
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></button>
                         <div id="myDropdown" class="dropdownlist absolute bg-gray-800 text-white right-0 mt-3 p-3 overflow-auto z-30 invisible w-100">
                             <a href="/" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-home fa-fw"></i> Home</a>
-                            <div class="border border-gray-800"></div>
-                            <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                            <form action="{{ route('logout') }}" method="post" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block">
+                                @csrf
+                                <button type="submit">
+                                    <a href="#">
+                                        <i class="fas fa-sign-out-alt fa-fw"></i> Log Out
+                                    </a>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </li>

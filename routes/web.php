@@ -52,3 +52,4 @@ Route::resource('/back/skills', SkillsController::class);
 Route::resource('/back/language', LanguageController::class);
 Route::resource('/back/project', ProjectController::class);
 Route::resource('/back/background', BackgroundController::class);
+

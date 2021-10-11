@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
            SkillsSeeder::class,
            LanguageSeeder::class,
            ProjectSeeder::class,
-           BackgroundSeeder::class
+           BackgroundSeeder::class,
+           UserSeeder::class
         ]);
     }
 }
