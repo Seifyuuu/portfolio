@@ -23,9 +23,7 @@
                             <form action="{{ route('logout') }}" method="post" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block">
                                 @csrf
                                 <button type="submit">
-                                    <a href="#">
                                         <i class="fas fa-sign-out-alt fa-fw"></i> Log Out
-                                    </a>
                                 </button>
                             </form>
                         </div>

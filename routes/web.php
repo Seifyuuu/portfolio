@@ -10,6 +10,7 @@ use App\Models\Background;
 use App\Models\Language;
 use App\Models\Network;
 use App\Models\Profile;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,8 @@ Route::get('/', function () {
     $network = Network::all();
     $language = Language::all();
     $background = Background::first();
-    return view('site.partials.home', compact("background" ,"language", "profile", "network"));
+    $skills = Skill::all();
+    return view('site.partials.home', compact("skills" ,"background" ,"language", "profile", "network"));
 });
 
 Route::get('/back', function () {

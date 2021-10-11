@@ -36,12 +36,47 @@
                         </svg>
                     </div>
                 </div>
-                <div class="my-5 mr-5 ml-5 flex justify-center">
-                    <p>Body</p>
+                <div class="my-5 mr-5 ml-5 flex justify-center flex-col">
+                    @foreach ($skills as $item )
+                    <br>
+                    <div>
+                    <span><i class=" ml-6 fab fa-{{$item->icon}}"></i>&nbsp;{{$item->name}}</span>    
+                    <ul style="list-style: none; display:flex">
+                    @if ($item->level == 1)
+                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                    @endif
+                        @if ($item->level == 2)
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+
+                        @endif
+                            @if ($item->level == 3)
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+
+                            @endif
+                                @if ($item->level == 4)
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+
+                                @endif
+                                    @if ($item->level == 5)
+                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                    @endif
+                            </ul>
+
+                                </div>
+                    @endforeach          
+                              
                 </div>
-                <div class="flex justify-end pt-2 space-x-14">
-                    <p>Footer</p>
-                </div>
+               
             </div>
         </div>
     </div>
